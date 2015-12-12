@@ -1,0 +1,10 @@
+{
+  parser: "babel-eslint",
+  extends: "dustinspecker/esnext",
+  plugins: [
+    "no-use-extend-native"
+  ],
+  rules: {
+    'new-cap': [2, {capIsNewExceptions: ['List', 'Map']}]
+  }
+}
