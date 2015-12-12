@@ -8,7 +8,12 @@
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "repository": "dustinspecker/redux-immutable-combine-reducers",
-  "keywords": [],
+  "keywords": [
+    "redux",
+    "immutable",
+    "combine",
+    "reducers"
+  ],
   "author": {
     "name": "Dustin Specker",
     "email": "DustinSpecker@DustinSpecker.com",
