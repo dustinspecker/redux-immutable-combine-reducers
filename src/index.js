@@ -15,11 +15,10 @@ module.exports = function (reducers) {
       }
     });
 
-    return function (state = Map({}), action) {
-      return Object.keys(reducers).reduce((nextstate, key) =>
+    return (state = Map({}), action) =>
+      Object.keys(reducers).reduce((nextstate, key) =>
         nextstate.set(key, reducers[key](state.get(key), action))
       , state);
-    };
   }
 
   if (Map.isMap(reducers)) {
@@ -29,11 +28,10 @@ module.exports = function (reducers) {
       }
     });
 
-    return function (state = Map({}), action) {
-      return reducers.keySeq().reduce((nextstate, key) =>
+    return (state = Map({}), action) =>
+      reducers.keySeq().reduce((nextstate, key) =>
         nextstate.set(key, reducers.get(key)((state.get(key), action)))
       , state);
-    };
   }
 
   throw new TypeError('Expected an object or Immutable Map');
