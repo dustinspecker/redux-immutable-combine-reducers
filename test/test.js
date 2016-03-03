@@ -55,13 +55,20 @@ describe('redux-immutable-combine-reducers', () => {
     austin.spy(reducers, 'testReducer');
     austin.spy(reducers, 'anotherTestReducer');
 
-    expect(combineReducers(reducers)()).to.equal(Map({
+    const firstState = combineReducers(reducers)();
+    expect(firstState).to.equal(Map({
       testReducer: 0,
       anotherTestReducer: ''
     }));
 
     expect(reducers.testReducer.callCount()).to.equal(1);
     expect(reducers.anotherTestReducer.callCount()).to.equal(1);
+
+    const secondState = combineReducers(reducers)(firstState, {type: 'INCREMENT'});
+    expect(secondState).to.equal(Map({
+      testReducer: 1,
+      anotherTestReducer: ''
+    }));
   });
 
   it('should throw error if not all of a Map\'s entries are functions', () => {
@@ -100,13 +107,21 @@ describe('redux-immutable-combine-reducers', () => {
       }
     });
 
-    expect(combineReducers(mapReducers)()).to.equal(Map({
+    const firstState = combineReducers(mapReducers)();
+
+    expect(firstState).to.equal(Map({
       testReducer: 0,
       anotherTestReducer: ''
     }));
 
     expect(testReducerCalled).to.equal(true);
     expect(anotherTestReducerCalled).to.equal(true);
+
+    const secondState = combineReducers(mapReducers)(firstState, {type: 'INCREMENT'});
+    expect(secondState).to.equal(Map({
+      testReducer: 1,
+      anotherTestReducer: ''
+    }));
   });
 
   it('should return same Immutable reference if nothing changed', () => {
