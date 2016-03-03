@@ -1,6 +1,6 @@
 {
   "name": "redux-immutable-combine-reducers",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Redux combineReducers that returns an Immutable Map",
   "main": "lib/index.js",
   "scripts": {
