@@ -30,7 +30,7 @@ module.exports = function (reducers) {
 
     return (state = Map({}), action) =>
       reducers.keySeq().reduce((nextstate, key) =>
-        nextstate.set(key, reducers.get(key)((state.get(key), action)))
+        nextstate.set(key, reducers.get(key)(state.get(key), action))
       , state);
   }
 
