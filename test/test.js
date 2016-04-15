@@ -20,7 +20,7 @@ describe('redux-immutable-combine-reducers', () => {
 
   it('should throw error if not all of an object\'s keys are functions', () => {
     const test = () => combineReducers({
-      test() {},
+      test: () => undefined,
       string: ''
     })
 
@@ -67,7 +67,7 @@ describe('redux-immutable-combine-reducers', () => {
 
   it('should throw error if not all of a Map\'s entries are functions', () => {
     const test = () => combineReducers(Map({
-      test() {},
+      test: () => undefined,
       string: ''
     }))
 
